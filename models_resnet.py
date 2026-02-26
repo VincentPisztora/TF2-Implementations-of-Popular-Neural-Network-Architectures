@@ -8,7 +8,6 @@
 
 ###############################################################################
 
-from models_pretrained import GenericClassificationHead
 from tensorflow.keras.layers import Lambda, Dense
 from tensorflow.keras.layers import ZeroPadding2D, Conv2D, BatchNormalization, Add, ReLU, GlobalAveragePooling2D
 
@@ -17,6 +16,37 @@ from tensorflow import keras
 import keras as keras_2
 
 ###############################################################################
+
+@keras.saving.register_keras_serializable()
+class GenericClassificationHead(keras.layers.Layer):
+    def __init__(self,n_classes,dense_dim,dropout,weight_decay,ln_epsilon=1e-6):
+        super(GenericClassificationHead,self).__init__()
+        self.n_classes = n_classes
+        self.dense_dim = dense_dim
+        self.dropout = dropout
+        self.weight_decay = weight_decay
+        self.ln_epsilon = ln_epsilon
+        
+        self.d_1 = Dense(self.dense_dim,activation=tf.keras.activations.relu)
+        self.d_2 = Dense(self.n_classes)
+        
+    def call(self,inputs,training=False): #[batch_size,embed_dim]
+        z = self.d_1(inputs) #[batch_size,dense_dim]
+        z = self.d_2(z) #[batch_size,n_classes]
+        return z
+    
+    def get_config(self):
+        config = {'dense_dim':self.dense_dim,
+                  'dropout':self.dropout,
+                  'n_classes':self.n_classes,
+                  'weight_decay':self.weight_decay,
+                  'ln_epsilon':self.ln_epsilon}
+        return config
+    
+    @classmethod
+    def from_config(cls,config):
+        return cls(**config)
+    
 @keras_2.saving.register_keras_serializable()
 class BasicBlock(keras.Model):
     def __init__(self, planes, stride=1, downsample=None, name=None, **kwargs):
@@ -203,3 +233,4 @@ class ResNet18(keras.Model):
     @classmethod
     def from_config(cls, config):
         return cls(**config)
+
