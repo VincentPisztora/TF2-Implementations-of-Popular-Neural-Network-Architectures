@@ -5,3 +5,5 @@ This repository contains code implementing a few commonly used neural network ar
 2. WideResNet ([Wide Residual Networks](https://arxiv.org/pdf/1605.07146))
 3. ViT ([An image is worth 16x16 words: Transformers for image recognition at scale](https://arxiv.org/pdf/2010.11929/100))
 4. ViT-MAE ([Masked Autoencoders Are Scalable Vision Learners](https://arxiv.org/pdf/2111.06377))
+
+<img src="https://www.google-analytics.com/collect?v=1&tid=G-QST3V3PB55&cid=555&t=event&ec=repo&ea=view&el=TF2-Implementations-of-Popular-Neural-Network-Architectures" style="display:none">
