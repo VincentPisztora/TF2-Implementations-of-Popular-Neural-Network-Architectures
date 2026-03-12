@@ -3,10 +3,8 @@
 ###############################################################################
 
 #References:
-#https://urldefense.com/v3/__https://rpmarchildon.com/wp-content/uploads/2018/09/RM-W-Keras-VGG-WRN-vF1.html*section_3__;Iw!!KVWo1iE!RdS6Q7nj7b4U_0RM76WDz-JXxp1iegsRk18mH2bHe-1Jg8OsAYUQwRIekCLBCHegva-96kXmEmHrUPd-ohXf$ 
-#https://urldefense.com/v3/__https://arxiv.org/pdf/1605.07146.pdf__;!!KVWo1iE!RdS6Q7nj7b4U_0RM76WDz-JXxp1iegsRk18mH2bHe-1Jg8OsAYUQwRIekCLBCHegva-96kXmEmHrUPl4FysJ$ 
-#https://urldefense.com/v3/__https://github.com/keras-team/keras/blob/v2.8.0/keras/layers/normalization/batch_normalization.py*L1125-L1265__;Iw!!KVWo1iE!RdS6Q7nj7b4U_0RM76WDz-JXxp1iegsRk18mH2bHe-1Jg8OsAYUQwRIekCLBCHegva-96kXmEmHrUNmMfQYI$ 
-
+#https://arxiv.org/pdf/1605.07146
+#https://github.com/keras-team/keras/blob/v2.8.0/keras/layers/normalization/batch_normalization.py#L1125-L1265
 ###############################################################################
 
 import tensorflow as tf
@@ -240,3 +238,4 @@ class WideResNet(keras.Model):
     @classmethod
     def from_config(cls, config):
         return cls(**config)
+
